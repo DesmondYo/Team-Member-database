@@ -1,0 +1,99 @@
+Last login: Sun Jun  7 12:23:19 on ttys005
+Dtown@Dezs-MacBook-Air ~ % echo 'export PATH=/usr/local/mysql/bin:$PATH' >> ~/.bash_profile
+Dtown@Dezs-MacBook-Air ~ % . ~/.bash_profile
+Dtown@Dezs-MacBook-Air ~ % env
+TMPDIR=/var/folders/86/2t8s25710vlgkx0z37cgzcn00000gn/T/
+XPC_FLAGS=0x0
+LaunchInstanceID=29B654E1-F5DD-4DAB-907C-8E0AD72AE071
+TERM=xterm-256color
+LANG=en_US.UTF-8
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.R4c5pvhCNK/Listeners
+SECURITYSESSIONID=186a8
+XPC_SERVICE_NAME=0
+TERM_PROGRAM=Apple_Terminal
+TERM_PROGRAM_VERSION=433
+TERM_SESSION_ID=19690212-08BB-4E27-A9DD-D46CBB4D2676
+SHELL=/bin/zsh
+HOME=/Users/Dtown
+LOGNAME=Dtown
+USER=Dtown
+PATH=/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
+SHLVL=1
+PWD=/Users/Dtown
+OLDPWD=/Users/Dtown
+_=/usr/bin/env
+Dtown@Dezs-MacBook-Air ~ % mysql -u root -[
+zsh: bad pattern: -[
+Dtown@Dezs-MacBook-Air ~ % mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.20 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| car                |
+| customers          |
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| teams              |
+| users              |
++--------------------+
+9 rows in set (0.49 sec)
+
+mysql> use teams;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++-----------------+
+| Tables_in_teams |
++-----------------+
+| members         |
+| teams           |
++-----------------+
+2 rows in set (0.00 sec)
+
+mysql> desc members;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id         | int         | NO   | PRI | NULL    | auto_increment |
+| first_name | varchar(25) | NO   |     | NULL    |                |
+| last_name  | varchar(25) | NO   |     | NULL    |                |
+| team_id    | int         | NO   | MUL | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.05 sec)
+
+mysql> desc teams;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(50) | NO   |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> INSERT INTO teams(name) VALUES("Cool Team");
+Query OK, 1 row affected (0.04 sec)
+
+mysql> mysql> INSERT INTO memebers(first_name, last_name, team_id) VALUES ("Dez", "Young", 1);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(first_name, last_name, team_id) VALUES ("Dez", "Young", 1)' at line 1
+mysql> INSERT INTO members(first_name, last_name, team_id) VALUES ("Dez", "Young", 1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
