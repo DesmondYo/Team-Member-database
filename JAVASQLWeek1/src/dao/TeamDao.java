@@ -60,7 +60,4 @@ public class TeamDao {
 	private Team populateTeam(int id, String name) throws SQLException {
 		return new Team(id, name, memberDao.getmembersByTeamId(id));
 	}
-	
-	
-	
 }

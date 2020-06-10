@@ -48,8 +48,6 @@ public class Menu {
 				e.printStackTrace();
 			}
 			
-			
-			
 			System.out.println("Press enter to continue...");
 			scanner.nextLine();
 		} while (!selection.equals("-1"));
@@ -107,5 +105,4 @@ public class Menu {
 		int id = Integer.parseInt(scanner.nextLine());
 		memberDao.deleteMemberById(id);
 	}
-	
 }
